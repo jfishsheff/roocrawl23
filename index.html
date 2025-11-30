@@ -1,0 +1,535 @@
+<div class="container">
+  <div class="dashboard-shell">
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Organic growth cockpit</span>
+    </div>
+
+    <h1>Organic Growth Reports</h1>
+
+    <p class="subtitle">
+      A single view of your organic performance. Connect GA4 and Search Console, then switch between sessions, engagement and query growth to see top performing landing pages and queries across week on week, month on month and year on year.
+    </p>
+
+    <!-- Top Tab Navigation -->
+    <div class="tab-nav">
+      <button class="tab-button active" data-tab-target="tab-setup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l2.4 2.4 3.4-.6-.6 3.4L19.8 11l-2.6 1.8.6 3.4-3.4-.6L12 19.8l-2.4-2.4-3.4.6.6-3.4L4.2 11l2.6-1.8-.6-3.4 3.4.6L12 3z"></path>
+          <circle cx="12" cy="11" r="2.4"></circle>
+        </svg>
+        <span class="label">Setup</span>
+        <span class="pill-indicator"></span>
+      </button>
+
+      <button class="tab-button" data-tab-target="tab-sessions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19l4.2-4.2L11 17l5-9 4 5"></path>
+          <path d="M3 5h4v4H3z"></path>
+        </svg>
+        <span class="label">Sessions</span>
+        <span class="pill-indicator"></span>
+      </button>
+
+      <button class="tab-button" data-tab-target="tab-engagement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c4.5-3.2 7.5-6.4 7.5-10.3A4.7 4.7 0 0 0 12 7.2 4.7 4.7 0 0 0 4.5 10.7C4.5 14.6 7.5 17.8 12 21z"></path>
+        </svg>
+        <span class="label">Engagement</span>
+        <span class="pill-indicator"></span>
+      </button>
+
+      <button class="tab-button" data-tab-target="tab-search-console">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10" cy="10" r="5"></circle>
+          <path d="M14.5 14.5L19 19"></path>
+        </svg>
+        <span class="label">Search Console</span>
+        <span class="pill-indicator"></span>
+      </button>
+
+      <button class="tab-button" data-tab-target="tab-ai-traffic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M8 12h8M12 8v8"></path>
+        </svg>
+        <span class="label">🤖 AI Traffic</span>
+        <span class="pill-indicator"></span>
+      </button>
+
+      <div class="tab-spacer"></div>
+      <div class="tab-env-indicator">Live GA4 & GSC data</div>
+    </div>
+
+    <div class="tab-panels">
+
+      <!-- SETUP TAB -->
+      <section id="tab-setup" class="tab-panel active">
+
+        <!-- Steps Card -->
+        <div class="card steps-card">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <strong>Log into your Google account</strong>
+              <div>If you have issues, email <a href="mailto:joemfisher1@gmail.com">joemfisher1@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">1.5</div>
+            <div class="step-content">
+              <strong>Select your GSC property</strong>
+              <div>Required for search query growth reports (week on week, month on month, year on year).</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <strong>Select your GA4 account and property</strong>
+              <span id="ga4-help-trigger" class="help-trigger">Help</span>
+
+              <div id="ga4-help-box" class="help-box">
+                <strong>How this works:</strong><br><br>
+                1. Click Sign in with Google<br>
+                2. Choose the Google account that has access to your GA4<br>
+                3. Select the account from the first dropdown<br>
+                4. Select the property from the second dropdown<br>
+                5. Click Load GA4 data
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <strong>Review the session, engagement and query growth reports</strong>
+              <div>Use the tabs above to move between Sessions, Engagement and Search Console once data is loaded.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Setup Card -->
+        <div class="card">
+
+          <!-- Auth -->
+          <div class="auth-section">
+            <button class="btn btn-primary" id="ga-signin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 12.2H12v-3h8.7A8.9 8.9 0 0 1 21 12.2z"></path>
+                <path d="M12 21a9 9 0 0 0 6.3-2.5l-3-2.5A5.3 5.3 0 0 1 12 17a5 5 0 0 1-4.7-3.4L4.1 15A9 9 0 0 0 12 21z"></path>
+                <path d="M7.3 9.6L4.1 7A9 9 0 0 1 20.3 7.2L17 9.8A5 5 0 0 0 12 7a5 5 0 0 0-4.7 2.6z"></path>
+              </svg>
+              <span>Sign in with Google (GA4)</span>
+            </button>
+
+            <button style="display:none;" class="btn btn-secondary" id="ga-signout">Sign out GA4</button>
+            <span style="display:none;" class="status" id="ga-status"></span>
+
+            <button class="btn btn-primary" id="gsc-signin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h16v16H4z"></path>
+                <path d="M9 9h6v6H9z"></path>
+              </svg>
+              <span>Sign in with Google (GSC)</span>
+            </button>
+
+            <button style="display:none;" class="btn btn-secondary" id="gsc-signout">Sign out GSC</button>
+            <span style="display:none;" class="status" id="gsc-status"></span>
+          </div>
+
+          <!-- GA4 Account Selection -->
+          <div class="input-section" id="property-input-wrapper">
+            <div class="input-group">
+              <div>
+                <label class="input-label" for="ga-account-select">Select GA4 account</label>
+                <select class="select" id="ga-account-select">
+                  <option value="">Loading accounts...</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="input-label" for="ga-property-select">Select GA4 property</label>
+                <select disabled class="select" id="ga-property-select">
+                  <option value="">Select an account first</option>
+                </select>
+              </div>
+
+              <button disabled class="btn btn-primary" id="ga-load">Load GA4 data</button>
+            </div>
+
+            <p class="input-hint">
+              Session reports use sessions only. Additional sections show month on month changes for average session duration and new users for organic medium only.
+            </p>
+          </div>
+
+          <!-- GSC Selection -->
+          <div class="input-section" id="gsc-input-wrapper">
+            <div class="input-group">
+              <div>
+                <label class="input-label" for="gsc-property-select">Select GSC property</label>
+                <select disabled class="select" id="gsc-property-select">
+                  <option value="">Sign in to GSC first</option>
+                </select>
+              </div>
+
+              <button disabled class="btn btn-primary" id="gsc-load">Load GSC data</button>
+            </div>
+
+            <p class="input-hint">
+              Search Console data is used for week on week, month on month and year on year search query growth based on clicks (top 10 increasing).
+            </p>
+          </div>
+
+          <div class="property-info" id="property-domain"></div>
+        </div>
+      </section>
+
+      <!-- SESSIONS TAB -->
+      <section id="tab-sessions" class="tab-panel">
+        <div class="card">
+
+          <!-- MoM -->
+          <div id="mom-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top 10 pages with month on month organic session growth</h2>
+                  <p class="results-subtitle">Ranked by biggest month on month increase in sessions.</p>
+                </div>
+
+                <div class="copy-btn-wrapper">
+                  <button class="btn btn-primary btn-small" id="copy-btn-mom">
+                    <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copy-text-mom">Copy table</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ga-table-mom">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Last 28 days</th>
+                    <th>Previous 28 days</th>
+                    <th>MoM growth</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- WoW -->
+          <div id="wow-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top 10 pages with week on week organic session growth</h2>
+                  <p class="results-subtitle">Ranked by biggest week on week increase in sessions.</p>
+                </div>
+                <div class="copy-btn-wrapper">
+                  <button class="btn btn-primary btn-small" id="copy-btn-wow">
+                    <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copy-text-wow">Copy table</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ga-table-wow">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Last 7 days</th>
+                    <th>Previous 7 days</th>
+                    <th>WoW growth</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- YoY -->
+          <div id="yoy-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top 10 pages with year on year organic session growth</h2>
+                  <p class="results-subtitle">Ranked by biggest year on year increase in sessions.</p>
+                </div>
+                <div class="copy-btn-wrapper">
+                  <button class="btn btn-primary btn-small" id="copy-btn-yoy">
+                    <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copy-text-yoy">Copy table</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ga-table-yoy">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Last 365 days</th>
+                    <th>Previous 365 days</th>
+                    <th>YoY growth</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ENGAGEMENT TAB -->
+      <section id="tab-engagement" class="tab-panel">
+        <div class="card">
+
+          <div id="avg-session-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top 10 pages by increase in average session duration</h2>
+                  <p class="results-subtitle">Ranked by biggest month on month increase in average session duration.</p>
+                </div>
+                <div class="copy-btn-wrapper">
+                  <button class="btn btn-primary btn-small" id="copy-btn-avg">
+                    <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copy-text-avg">Copy table</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ga-table-avg">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Last 28 days (seconds)</th>
+                    <th>Previous 28 days (seconds)</th>
+                    <th>MoM change</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="new-users-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top 10 pages by increase in new users</h2>
+                  <p class="results-subtitle">Ranked by biggest month on month increase in new users.</p>
+                </div>
+                <div class="copy-btn-wrapper">
+                  <button class="btn btn-primary btn-small" id="copy-btn-new">
+                    <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="copy-text-new">Copy table</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ga-table-new">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Last 28 days</th>
+                    <th>Previous 28 days</th>
+                    <th>MoM growth</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEARCH CONSOLE TAB -->
+      <section id="tab-search-console" class="tab-panel">
+        <div class="card">
+
+          <div id="gsc-query-section" class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Top search queries with increased clicks</h2>
+                  <p class="results-subtitle">Showing queries with biggest WoW, MoM and YoY growth.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- WoW -->
+            <div class="results-subsection">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px;">
+                <h3 style="font-size:16px;font-weight:600;">Week on week (clicks)</h3>
+                <button class="btn btn-primary btn-small" id="copy-btn-gsc-wow">
+                  <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span id="copy-text-gsc-wow">Copy table</span>
+                </button>
+              </div>
+
+              <div class="table-wrapper">
+                <table id="gsc-wow-table">
+                  <thead>
+                    <tr>
+                      <th>Search query</th>
+                      <th>Last 7 days</th>
+                      <th>Previous 7 days</th>
+                      <th>WoW growth</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- MoM -->
+            <div class="results-subsection">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px;">
+                <h3 style="font-size:16px;font-weight:600;">Month on month (clicks)</h3>
+                <button class="btn btn-primary btn-small" id="copy-btn-gsc-mom">
+                  <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span id="copy-text-gsc-mom">Copy table</span>
+                </button>
+              </div>
+
+              <div class="table-wrapper">
+                <table id="gsc-mom-table">
+                  <thead>
+                    <tr>
+                      <th>Search query</th>
+                      <th>Last 28 days</th>
+                      <th>Previous 28 days</th>
+                      <th>MoM growth</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- YoY -->
+            <div class="results-subsection">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px;">
+                <h3 style="font-size:16px;font-weight:600;">Year on year (clicks)</h3>
+                <button class="btn btn-primary btn-small" id="copy-btn-gsc-yoy">
+                  <svg stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span id="copy-text-gsc-yoy">Copy table</span>
+                </button>
+              </div>
+
+              <div class="table-wrapper">
+                <table id="gsc-yoy-table">
+                  <thead>
+                    <tr>
+                      <th>Search query</th>
+                      <th>Last 365 days</th>
+                      <th>Previous 365 days</th>
+                      <th>YoY growth</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- AI TRAFFIC TAB -->
+      <section id="tab-ai-traffic" class="tab-panel">
+        <div class="card">
+
+          <!-- AI Landing Pages -->
+          <div class="results-subsection">
+            <div class="results-header">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                <div>
+                  <h2 class="results-title">Pages with AI referral traffic</h2>
+                  <p class="results-subtitle">Top landing pages that received sessions from AI sources in the last 28 days.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ai-pages-table">
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>AI sessions</th>
+                    <th>AI source breakdown</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AI Source Mediums -->
+          <div class="results-subsection" style="margin-top:40px;">
+            <div class="results-header">
+              <h2 class="results-title">AI source mediums</h2>
+              <p class="results-subtitle">Breakdown of AI referral sessions by source for the last 28 days.</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table id="ai-sources-table">
+                <thead>
+                  <tr>
+                    <th>AI source</th>
+                    <th>Sessions (last 28 days)</th>
+                    <th>Share</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
