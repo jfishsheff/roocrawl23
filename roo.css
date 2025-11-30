@@ -5,26 +5,34 @@
 }
 
 :root {
-  --bg-main: #020617;
-  --bg-card: #020617;
-  --bg-card-soft: #020617;
-  --border-subtle: #1f2937;
+  --bg-main: #f5f6f8;
+  --bg-card: #ffffff;
+  --bg-card-soft: #f9fafb;
+
+  --border-subtle: #d1d5db;
+
   --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.18);
+  --accent-soft: rgba(56, 189, 248, 0.25);
   --accent-strong: #0ea5e9;
   --accent-secondary: #8b5cf6;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --text-soft: #6b7280;
-  --danger: #f97373;
-  --success: #22c55e;
-  --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.65);
+
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --text-soft: #9ca3af;
+
+  --danger: #dc2626;
+  --success: #16a34a;
+
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.08);
+
   --radius-lg: 24px;
   --radius-md: 14px;
   --radius-pill: 999px;
+
   --transition-fast: 0.18s ease-out;
   --transition-med: 0.28s ease-out;
 }
+
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -743,3 +751,4 @@ td:nth-child(4) {
     min-width: 580px;
   }
 }
+
