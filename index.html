@@ -3,382 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Load external CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jfishsheff/roocrawl23@main/styles.css">
+
+  <!-- Google OAuth client -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- External JS -->
+  <script src="https://cdn.jsdelivr.net/gh/jfishsheff/roocrawl23@main/script.js" defer></script>
+
   <title>Organic Growth Reports</title>
-
-  <!-- Your CSS file -->
-  <link rel="stylesheet" href="roo.css">
 </head>
-
 <body>
 
 <div class="container">
-  <div class="dashboard-shell">
 
-    <div class="badge">
-      <span class="badge-dot"></span>
-      <span>Organic growth cockpit</span>
+  <!-- Steps card -->
+  <div class="card steps-card">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <strong>Log into your Google account</strong>
+        <div>If you have issues, email <a href="mailto:joemfisher1@gmail.com">joemfisher1@gmail.com</a></div>
+      </div>
     </div>
+
+    <div class="step">
+      <div class="step-number">1.5</div>
+      <div class="step-content">
+        <strong>Select your GSC property</strong>
+        <div>Required for search query growth reports.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <strong>Select your GA4 account and property</strong>
+        <span class="help-trigger" id="ga4-help-trigger">Help</span>
+        <div class="help-box" id="ga4-help-box">
+          <strong>How this works:</strong><br><br>
+          1. Click Sign in with Google<br>
+          2. Choose the Google account that has access<br>
+          3. Select the account<br>
+          4. Select the property<br>
+          5. Click Load Data
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <strong>Review reports</strong>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Main card -->
+  <div class="card">
 
     <h1>Organic Growth Reports</h1>
+    <p class="subtitle">Shows organic session growth, engagement growth and Search Console query growth.</p>
 
-    <p class="subtitle">
-      A single view of your organic performance. Connect GA4 and Search Console, then switch between sessions, engagement and query growth to see top performing landing pages and queries across week on week, month on month and year on year.
-    </p>
+    <!-- Auth section -->
+    <div class="auth-section">
+      <button id="ga-signin" class="btn btn-primary">Sign in with Google (GA4)</button>
+      <button id="ga-signout" class="btn btn-secondary" style="display:none;">Sign out GA4</button>
+      <span id="ga-status" class="status" style="display:none;"></span>
 
-    <!-- Top Tab Navigation -->
-    <div class="tab-nav">
-      <button class="tab-button active" data-tab-target="tab-setup">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3l2.4 2.4 3.4-.6-.6 3.4L19.8 11l-2.6 1.8.6 3.4-3.4-.6L12 19.8l-2.4-2.4-3.4.6.6-3.4L4.2 11l2.6-1.8-.6-3.4 3.4.6L12 3z"></path>
-          <circle cx="12" cy="11" r="2.4"></circle>
-        </svg>
-        <span class="label">Setup</span>
-        <span class="pill-indicator"></span>
-      </button>
-
-      <button class="tab-button" data-tab-target="tab-sessions">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19l4.2-4.2L11 17l5-9 4 5"></path>
-          <path d="M3 5h4v4H3z"></path>
-        </svg>
-        <span class="label">Sessions</span>
-        <span class="pill-indicator"></span>
-      </button>
-
-      <button class="tab-button" data-tab-target="tab-engagement">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21c4.5-3.2 7.5-6.4 7.5-10.3A4.7 4.7 0 0 0 12 7.2 4.7 4.7 0 0 0 4.5 10.7C4.5 14.6 7.5 17.8 12 21z"></path>
-        </svg>
-        <span class="label">Engagement</span>
-        <span class="pill-indicator"></span>
-      </button>
-
-      <button class="tab-button" data-tab-target="tab-search-console">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="10" cy="10" r="5"></circle>
-          <path d="M14.5 14.5L19 19"></path>
-        </svg>
-        <span class="label">Search Console</span>
-        <span class="pill-indicator"></span>
-      </button>
-
-      <button class="tab-button" data-tab-target="tab-ai-traffic">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M8 12h8M12 8v8"></path>
-        </svg>
-        <span class="label">🤖 AI Traffic</span>
-        <span class="pill-indicator"></span>
-      </button>
-
-      <div class="tab-spacer"></div>
-      <div class="tab-env-indicator">Live GA4 and GSC data</div>
+      <button id="gsc-signin" class="btn btn-primary">Sign in with Google (GSC)</button>
+      <button id="gsc-signout" class="btn btn-secondary" style="display:none;">Sign out GSC</button>
+      <span id="gsc-status" class="status" style="display:none;"></span>
     </div>
 
-    <div class="tab-panels">
-
-      <!-- SETUP TAB -->
-      <section id="tab-setup" class="tab-panel active">
-
-        <!-- Steps Card -->
-        <div class="card steps-card">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <strong>Log into your Google account</strong>
-              <div>If you have issues, email <a href="mailto:joemfisher1@gmail.com">joemfisher1@gmail.com</a></div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">1.5</div>
-            <div class="step-content">
-              <strong>Select your GSC property</strong>
-              <div>Required for search query growth reports.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <strong>Select your GA4 account and property</strong>
-              <span id="ga4-help-trigger" class="help-trigger">Help</span>
-
-              <div id="ga4-help-box" class="help-box">
-                <strong>How this works:</strong><br><br>
-                1. Click Sign in with Google<br>
-                2. Choose the Google account that has access<br>
-                3. Select the account<br>
-                4. Select the property<br>
-                5. Click Load GA4 data
-              </div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <strong>Review the reports</strong>
-            </div>
-          </div>
+    <!-- GA4 selection -->
+    <div id="property-input-wrapper" class="input-section">
+      <div class="input-group">
+        <div>
+          <label for="ga-account-select" class="input-label">Select GA4 account</label>
+          <select id="ga-account-select" class="select">
+            <option value="">Loading accounts...</option>
+          </select>
         </div>
 
-        <!-- Main Setup Card -->
-        <div class="card">
-
-          <!-- Auth -->
-          <div class="auth-section">
-            <button class="btn btn-primary" id="ga-signin">
-              <span>Sign in with Google (GA4)</span>
-            </button>
-
-            <button style="display:none;" class="btn btn-secondary" id="ga-signout">Sign out GA4</button>
-            <span style="display:none;" class="status" id="ga-status"></span>
-
-            <button class="btn btn-primary" id="gsc-signin">
-              <span>Sign in with Google (GSC)</span>
-            </button>
-
-            <button style="display:none;" class="btn btn-secondary" id="gsc-signout">Sign out GSC</button>
-            <span style="display:none;" class="status" id="gsc-status"></span>
-          </div>
-
-          <!-- GA4 Account Selection -->
-          <div class="input-section" id="property-input-wrapper">
-            <div class="input-group">
-              <div>
-                <label class="input-label" for="ga-account-select">Select GA4 account</label>
-                <select class="select" id="ga-account-select">
-                  <option value="">Loading accounts...</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="input-label" for="ga-property-select">Select GA4 property</label>
-                <select disabled class="select" id="ga-property-select">
-                  <option value="">Select an account first</option>
-                </select>
-              </div>
-
-              <button disabled class="btn btn-primary" id="ga-load">Load GA4 data</button>
-            </div>
-          </div>
-
-          <!-- GSC Selection -->
-          <div class="input-section" id="gsc-input-wrapper">
-            <div class="input-group">
-              <div>
-                <label class="input-label" for="gsc-property-select">Select GSC property</label>
-                <select disabled class="select" id="gsc-property-select">
-                  <option value="">Sign in to GSC first</option>
-                </select>
-              </div>
-
-              <button disabled class="btn btn-primary" id="gsc-load">Load GSC data</button>
-            </div>
-          </div>
-
-          <div class="property-info" id="property-domain"></div>
+        <div>
+          <label for="ga-property-select" class="input-label">Select GA4 property</label>
+          <select id="ga-property-select" class="select" disabled>
+            <option value="">Select an account first</option>
+          </select>
         </div>
-      </section>
 
-      <!-- SESSIONS TAB -->
-      <section id="tab-sessions" class="tab-panel">
-        <div class="card">
-          <div id="mom-section" class="results-subsection">
-            <h2 class="results-title">Top 10 pages with month on month organic session growth</h2>
-            <div class="table-wrapper">
-              <table id="ga-table-mom">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>Last 28 days</th>
-                    <th>Previous 28 days</th>
-                    <th>MoM growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+        <button id="ga-load" class="btn btn-primary" disabled>Load GA4 data</button>
+      </div>
+    </div>
 
-          <div id="wow-section" class="results-subsection">
-            <h2 class="results-title">Top 10 pages with week on week organic session growth</h2>
-            <div class="table-wrapper">
-              <table id="ga-table-wow">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>Last 7 days</th>
-                    <th>Previous 7 days</th>
-                    <th>WoW growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-
-          <div id="yoy-section" class="results-subsection">
-            <h2 class="results-title">Top 10 pages with year on year organic session growth</h2>
-            <div class="table-wrapper">
-              <table id="ga-table-yoy">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>Last 365 days</th>
-                    <th>Previous 365 days</th>
-                    <th>YoY growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+    <!-- GSC selection -->
+    <div id="gsc-input-wrapper" class="input-section">
+      <div class="input-group">
+        <div>
+          <label for="gsc-property-select" class="input-label">Select GSC property</label>
+          <select id="gsc-property-select" class="select" disabled>
+            <option value="">Sign in to GSC first</option>
+          </select>
         </div>
-      </section>
 
-      <!-- ENGAGEMENT TAB -->
-      <section id="tab-engagement" class="tab-panel">
-        <div class="card">
+        <button id="gsc-load" class="btn btn-primary" disabled>Load GSC data</button>
+      </div>
+    </div>
 
-          <div id="avg-session-section" class="results-subsection">
-            <h2 class="results-title">Top 10 pages by increase in average session duration</h2>
-            <div class="table-wrapper">
-              <table id="ga-table-avg">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>Last 28 days (seconds)</th>
-                    <th>Previous 28 days (seconds)</th>
-                    <th>MoM change</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+    <!-- Property info -->
+    <div id="property-domain" class="property-info"></div>
 
-          <div id="new-users-section" class="results-subsection">
-            <h2 class="results-title">Top 10 pages by increase in new users</h2>
-            <div class="table-wrapper">
-              <table id="ga-table-new">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>Last 28 days</th>
-                    <th>Previous 28 days</th>
-                    <th>MoM growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+    <!-- Results section -->
+    <div id="ga-results" class="results-section">
 
+      <!-- MoM -->
+      <div class="results-subsection" id="mom-section">
+        <div class="results-header">
+          <h2 class="results-title">Month over month session growth</h2>
         </div>
-      </section>
 
-      <!-- SEARCH CONSOLE TAB -->
-      <section id="tab-search-console" class="tab-panel">
-        <div class="card">
-
-          <div id="gsc-query-section" class="results-subsection">
-            <h2 class="results-title">Top search queries with increased clicks</h2>
-
-            <div class="table-wrapper">
-              <table id="gsc-wow-table">
-                <thead>
-                  <tr>
-                    <th>Search query</th>
-                    <th>Last 7 days</th>
-                    <th>Previous 7 days</th>
-                    <th>WoW growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-
-            <div class="table-wrapper">
-              <table id="gsc-mom-table">
-                <thead>
-                  <tr>
-                    <th>Search query</th>
-                    <th>Last 28 days</th>
-                    <th>Previous 28 days</th>
-                    <th>MoM growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-
-            <div class="table-wrapper">
-              <table id="gsc-yoy-table">
-                <thead>
-                  <tr>
-                    <th>Search query</th>
-                    <th>Last 365 days</th>
-                    <th>Previous 365 days</th>
-                    <th>YoY growth</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
+        <div class="table-wrapper">
+          <table id="ga-table-mom">
+            <thead>
+              <tr>
+                <th>Landing page</th>
+                <th>Last 28 days</th>
+                <th>Previous 28 days</th>
+                <th>MoM growth</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-      </section>
+      </div>
 
-      <!-- AI TRAFFIC TAB -->
-      <section id="tab-ai-traffic" class="tab-panel">
-        <div class="card">
-
-          <div class="results-subsection">
-            <h2 class="results-title">Pages with AI referral traffic</h2>
-            <div class="table-wrapper">
-              <table id="ai-pages-table">
-                <thead>
-                  <tr>
-                    <th>Landing page</th>
-                    <th>AI sessions</th>
-                    <th>AI source breakdown</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="results-subsection">
-            <h2 class="results-title">AI source mediums</h2>
-            <div class="table-wrapper">
-              <table id="ai-sources-table">
-                <thead>
-                  <tr>
-                    <th>AI source</th>
-                    <th>Sessions (last 28 days)</th>
-                    <th>Share</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-
+      <!-- WoW -->
+      <div class="results-subsection" id="wow-section">
+        <div class="table-wrapper">
+          <table id="ga-table-wow">
+            <thead>
+              <tr>
+                <th>Landing page</th>
+                <th>Last 7 days</th>
+                <th>Previous 7 days</th>
+                <th>WoW growth</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-      </section>
+      </div>
+
+      <!-- YoY -->
+      <div class="results-subsection" id="yoy-section">
+        <div class="table-wrapper">
+          <table id="ga-table-yoy">
+            <thead>
+              <tr>
+                <th>Landing page</th>
+                <th>Last 365 days</th>
+                <th>Previous 365 days</th>
+                <th>YoY growth</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GSC -->
+      <div class="results-subsection" id="gsc-query-section">
+
+        <h2 class="results-title">Search Console query growth</h2>
+
+        <div class="table-wrapper">
+          <table id="gsc-wow-table">
+            <thead>
+              <tr>
+                <th>Query</th>
+                <th>Last 7 days</th>
+                <th>Previous 7 days</th>
+                <th>WoW</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="gsc-mom-table">
+            <thead>
+              <tr>
+                <th>Query</th>
+                <th>Last 28 days</th>
+                <th>Previous 28 days</th>
+                <th>MoM</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="gsc-yoy-table">
+            <thead>
+              <tr>
+                <th>Query</th>
+                <th>Last 365 days</th>
+                <th>Previous 365 days</th>
+                <th>YoY</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </div>
 
     </div>
+
   </div>
+
 </div>
 
-<!-- Your JS file -->
-<script src="roo.js" defer></script>
-
-<!-- Google OAuth -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  window.onload = () => initOAuth();
+</script>
 
 </body>
 </html>
